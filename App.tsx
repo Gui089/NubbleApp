@@ -15,6 +15,7 @@ function App(): JSX.Element {
   return (
     <View>
       <Text preset='headingLarge' style={{color:'purple'}}>Guilherme</Text>
+      <Text preset='headingLarge' style={{color:'purple', fontFamily:'Satoshi-Black'}}>Guilherme</Text>
     </View>
   );
 }
