@@ -1,26 +1,36 @@
 import React from "react";
 import { Text } from "../Text/Text";
-import { Box } from "../Box/Box";
+import { Box, TouchableOpacityBox } from "../Box/Box";
+import { ActivityIndicator } from "react-native";
 
 interface ButtonProps {
     title: string;
+    loading?: boolean;
 }
 
 export function Button(props: ButtonProps){
 
     return (
-        <Box
+        <TouchableOpacityBox
             backgroundColor="buttonPrimary"
-            paddingHorizontal="s12"
-            /* style={{
-            backgroundColor: colors.greenPrimary,
-            height: 50, 
-            borderRadius: 16, 
-            alignItems:'center', 
-            justifyContent:'center'
-            }} */>
-            <Text preset="paragraphMedium" style={{color:'white'}} bold>{props.title}</Text>
-        </Box>
+            paddingHorizontal="s20"
+            height={50}
+            alignItems="center"
+            justifyContent="center"
+            borderRadius="s16"
+            >
+            {props.loading ? (
+                <ActivityIndicator />
+            ) : (
+                <Text 
+                preset="paragraphMedium" 
+                style={{color:'white'}} 
+                bold
+            >
+                {props.title}
+            </Text>
+            )}
+        </TouchableOpacityBox>
     )
 }
 
