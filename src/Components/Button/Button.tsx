@@ -25,7 +25,7 @@ export function Button({title, loading, ...TouchableOpacityBoxProps}: ButtonProp
             ) : (
                 <Text 
                 preset="paragraphMedium" 
-                style={{color:'white'}} 
+                color="primaryContrast"
                 bold
             >
                 {title}
