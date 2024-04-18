@@ -22,9 +22,7 @@ function App(): JSX.Element {
       <SafeAreaView>
         <View style={{paddingHorizontal: 16}}>
           <Text italic preset='headingLarge' style={{color:'black', alignSelf:'center'}}>Nubble-App</Text>
-          <Box marginBottom='s24'>
-            <Button title='Entrar'/>
-          </Box>
+            <Button marginBottom='s24' title='Entrar'/>
           <Button title='loading' loading />
         </View>
       </SafeAreaView>
