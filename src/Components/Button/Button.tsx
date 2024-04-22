@@ -11,19 +11,39 @@ interface ButtonUI {
     content: ThemeColors;
 }
 
-const buttonPresets: Record<ButtonPreset, ButtonUI> = {
+const buttonPresets: Record<ButtonPreset, {
+    default:ButtonUI,
+    disabled: ButtonUI
+}> = {
     primary: {
-        container: {
-            backgroundColor: 'primary'
+        default: {
+            container: {
+                backgroundColor: 'primary'
+            },
+            content: 'primaryContrast'
         },
-        content: 'primaryContrast'
+        disabled: {
+            container:{
+                backgroundColor:'gray4'
+            },
+            content:'gray2'
+        }
     },
     outline: {
-        container: {
-            borderWidth:1,
-            borderColor: 'primary'
+        default:{
+            container: {
+                borderWidth:1,
+                borderColor: 'primary'
+            },
+            content:'primary'
         },
-        content:'primary'
+        disabled:{
+            container:{
+                borderWidth:1,
+                borderColor:'gray4'
+            },
+            content:'gray2'
+        }
     }
 }
 
@@ -31,14 +51,16 @@ interface ButtonProps extends TouchableOpacityBoxProps{
     title: string;
     loading?: boolean;
     preset?:ButtonPreset;
+    disabled?:boolean;
 }
 
-export function Button({title, loading, preset='primary', ...TouchableOpacityBoxProps}: ButtonProps){
+export function Button({title, loading, preset='primary',disabled, ...TouchableOpacityBoxProps}: ButtonProps){
 
-    const buttonPreset = buttonPresets[preset];
+    const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
 
     return (
         <TouchableOpacityBox
+            disabled={disabled || loading}
             paddingHorizontal="s20"
             height={50}
             alignItems="center"
