@@ -25,7 +25,8 @@ function App(): JSX.Element {
             <Text marginBottom='s40' preset='paragraphLarge'>Digite seu e-mail e senha para entrar</Text>
 
           <Box marginBottom='s20'>
-            <TextInput 
+            <TextInput
+              errorMessage='Mensagem de erro'
               label='Email'
               placeholder='Digite seu e-mail' 
              />
@@ -33,6 +34,7 @@ function App(): JSX.Element {
 
           <Box marginBottom='s20'>
             <TextInput 
+              
               label='Senha'
               placeholder='Digite sua senha' 
               />
