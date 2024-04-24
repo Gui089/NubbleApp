@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { ReactElement, ReactNode, useRef } from "react";
 import { Pressable, TextInput as RNTextInput, TextInputProps as RNTextInputProps, TextStyle} from "react-native";
 import { Box, BoxProps } from "../Box/Box";
 import { $fontFamily, $fontText, Text } from "../Text/Text";
@@ -7,9 +7,10 @@ import { useAppTheme } from "../../hooks/useAppTheme";
 interface TextInputProps extends RNTextInputProps {
     label:string;
     errorMessage?: string;
+    RightComponent?: ReactElement;
 }
 
-export function TextInput({label,errorMessage, ...rnTextInputProps}: TextInputProps) {
+export function TextInput({label,errorMessage,RightComponent, ...rnTextInputProps}: TextInputProps) {
 
     const {colors} = useAppTheme()
     const inputRef = useRef<RNTextInput>(null);
@@ -19,6 +20,7 @@ export function TextInput({label,errorMessage, ...rnTextInputProps}: TextInputPr
     }
 
     const $textInputContainer: BoxProps = {
+        flexDirection:'row',
         borderWidth: errorMessage ? 2 : 1,
         borderColor: errorMessage ? 'error' : 'gray4',
         padding:'s16',
@@ -42,7 +44,13 @@ export function TextInput({label,errorMessage, ...rnTextInputProps}: TextInputPr
                     placeholderTextColor={colors.gray2}
                     style={$textInputStyle}
                     {...rnTextInputProps} />
+
+                    { RightComponent && 
+                    <Box justifyContent="center" marginLeft="s16">
+                        {RightComponent}
+                    </Box>}
             </Box>
+
             {errorMessage && <Text 
                 preset="paragraphSmall" 
                 bold 
@@ -55,6 +63,8 @@ export function TextInput({label,errorMessage, ...rnTextInputProps}: TextInputPr
 }
 
 const $textInputStyle: TextStyle = {
+    flexGrow:1,
+    flexShrink:1,
     padding:0,
     fontFamily: $fontFamily.regular,
     ...$fontText

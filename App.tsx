@@ -13,6 +13,7 @@ import { Text } from './src/Components/Text/Text';
 import { Box } from './src/Components/Box/Box';
 import { Button } from './src/Components/Button/Button';
 import { TextInput } from './src/Components/TextInput/TextInput';
+import { Icon } from './src/Components/icon/Icon';
 
 
 function App(): JSX.Element {
@@ -34,7 +35,7 @@ function App(): JSX.Element {
 
           <Box marginBottom='s20'>
             <TextInput 
-              
+              RightComponent={<Icon color='gray2' name='eyeOn' />}
               label='Senha'
               placeholder='Digite sua senha' 
               />
