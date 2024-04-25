@@ -7,12 +7,18 @@ import { Button } from "../../../Components/Button/Button";
 import { Box } from "../../../Components/Box/Box";
 
 export function SingUpScreen() {
+    
+    const formSubmit = () => {
+        //TODO: Implement 
+    }
+
     return (
-        <ScreenComponent changeGoBack>
+        <ScreenComponent changeGoBack scrollable>
             <Text preset="headingLarge" mb="s32">Criar uma Conta</Text>
 
             <Box marginBottom="s24">
                 <TextInput 
+                    errorMessage="Digite um username válido"
                     label="Seu Username" 
                     placeholder="@"
                 />
@@ -42,7 +48,7 @@ export function SingUpScreen() {
                 />
             </Box>
 
-            <Button preset="primary" title="Criar uma conta" />
+            <Button onPress={formSubmit} preset="primary" title="Criar uma conta" />
         </ScreenComponent>
     )
 }
