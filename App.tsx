@@ -10,6 +10,7 @@ import { ThemeProvider} from '@shopify/restyle';
 import { theme } from './src/theme/Theme';
 import { LoginScreen } from './src/screens/auth/LoginScreen/LoginScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SingUpScreen } from './src/screens/auth/SingUpScreen/SingnUpScree';
 
 
 function App(): JSX.Element {
@@ -17,7 +18,8 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <LoginScreen />
+        {/* <LoginScreen /> */}
+        <SingUpScreen />
       </ThemeProvider>
     </SafeAreaProvider>
   );
