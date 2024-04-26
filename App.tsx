@@ -11,6 +11,7 @@ import { theme } from './src/theme/Theme';
 import { LoginScreen } from './src/screens/auth/LoginScreen/LoginScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SingUpScreen } from './src/screens/auth/SingUpScreen/SingnUpScree';
+import { Router } from './src/routes/Routes';
 
 
 function App(): JSX.Element {
@@ -18,8 +19,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        {/* <LoginScreen /> */}
-        <SingUpScreen />
+        <Router />
       </ThemeProvider>
     </SafeAreaProvider>
   );
