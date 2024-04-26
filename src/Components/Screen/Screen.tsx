@@ -20,7 +20,7 @@ export function ScreenComponent({children, changeGoBack = false, scrollable = fa
     const Container = scrollable ? ScrollViewContainer : ViewContainer;
 
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
             <Container backgroundColor={colors.background}>
                 <Box 
                     paddingBottom="s24"

@@ -5,6 +5,7 @@ import { TextInput } from "../../../Components/TextInput/TextInput";
 import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
 import { Box } from "../../../Components/Box/Box";
+import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
 
 export function SingUpScreen() {
     
@@ -40,13 +41,10 @@ export function SingUpScreen() {
             </Box>
             
 
-            <Box marginBottom="s40">
-                <TextInput 
-                    RightComponent={<Icon color='gray2' name='eyeOn' />}
-                    label='Senha'
-                    placeholder='Digite sua senha' 
-                />
-            </Box>
+            <PasswordInput
+                label="Senha"
+                placeholder="Digite sua senha"
+            />
 
             <Button onPress={formSubmit} preset="primary" title="Criar uma conta" />
         </ScreenComponent>
