@@ -16,7 +16,7 @@ interface Props {
 
 export function ScreenComponent({children, changeGoBack = false, scrollable = false}: Props) {
 
-    
+
     const {top, bottom} = useAppSafeArea();
     const {colors} = useAppTheme();
     const Container = scrollable ? ScrollViewContainer : ViewContainer;

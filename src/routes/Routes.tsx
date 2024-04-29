@@ -4,7 +4,13 @@ import React from "react";
 import { LoginScreen } from "../screens/auth/LoginScreen/LoginScreen";
 import { SingUpScreen } from "../screens/auth/SingUpScreen/SingnUpScree";
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+    LoginScreen: undefined,
+    SignUpScreen: undefined,
+    //TODO: SuccessScreen : undefined
+}
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export function Router() {
     return (

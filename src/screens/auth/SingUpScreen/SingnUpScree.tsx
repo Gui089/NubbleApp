@@ -6,8 +6,12 @@ import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
 import { Box } from "../../../Components/Box/Box";
 import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+import { RootStackParamList } from "../../../routes/Routes";
 
-export function SingUpScreen() {
+
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
+export function SingUpScreen(props: ScreenProps) {
     
     const formSubmit = () => {
         //TODO: Implement 

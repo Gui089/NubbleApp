@@ -6,8 +6,12 @@ import { TextInput } from "../../../Components/TextInput/TextInput";
 import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
 import { ScreenComponent } from "../../../Components/Screen/Screen";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+import { RootStackParamList } from "../../../routes/Routes";
 
-export function LoginScreen({navigation}) {
+
+type ScreenPros = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>
+export function LoginScreen({navigation}: ScreenPros) {
 
   const navigateToSignUpScreen = () => {
     navigation.navigate('SignUpScreen');
