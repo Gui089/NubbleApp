@@ -11,10 +11,10 @@ import { RootStackParamList } from "../../../routes/Routes";
 
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
-export function SingUpScreen(props: ScreenProps) {
+export function SingUpScreen({navigation}: ScreenProps) {
     
     const formSubmit = () => {
-        //TODO: Implement 
+        navigation.navigate('SuccessScreen');
     }
 
     return (
