@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, View } from "react-native";
 import { Text } from "../../../Components/Text/Text";
-import { Box } from "../../../Components/Box/Box";
+import { Box, TouchableOpacityBox } from "../../../Components/Box/Box";
 import { TextInput } from "../../../Components/TextInput/TextInput";
 import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
@@ -15,6 +15,15 @@ export function LoginScreen({navigation}: ScreenPros) {
 
   const navigateToSignUpScreen = () => {
     navigation.navigate('SignUpScreen');
+  }
+
+  const goToForgotPassword = () => {
+    navigation.navigate('ForgotPasswordScreen', {
+      title: 'Esqueci minha senha',
+      description: 'Digite seu e-mail e enviaremos as instruções para redefinição de senha',
+      labelInput:'E-mail',
+      placeholderInput:'Digite seu e-mail'
+    });
   }
 
     return (
@@ -39,8 +48,11 @@ export function LoginScreen({navigation}: ScreenPros) {
               placeholder='Digite sua senha' 
               />
           </Box>
-
-            <Text bold marginTop='s10' color='primary' preset='paragraphSmall'>Esqueci minhan senha</Text>
+            
+            <TouchableOpacityBox hitSlop={10} onPress={goToForgotPassword}>
+              <Text bold marginTop='s10' color='primary' preset='paragraphSmall'>Esqueci minhan senha</Text>
+            </TouchableOpacityBox>
+            
 
             <Button marginTop='s48' title='Entrar' />
             <Button onPress={navigateToSignUpScreen} preset='outline' marginTop='s12' title='Criar uma conta'/>
