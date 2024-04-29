@@ -4,11 +4,16 @@ import React from "react";
 import { LoginScreen } from "../screens/auth/LoginScreen/LoginScreen";
 import { SingUpScreen } from "../screens/auth/SingUpScreen/SingnUpScree";
 import { SuccessScreen } from "../screens/auth/SucessScreen/SuccessScreen";
+import { IconProps } from "../Components/icon/Icon";
 
 export type RootStackParamList = {
     LoginScreen: undefined,
     SignUpScreen: undefined,
-    SuccessScreen : undefined
+    SuccessScreen : {
+        title: string,
+        description: string,
+        icon: Pick<IconProps, 'name' | 'color'>
+    }
 }
 
 const Stack = createStackNavigator<RootStackParamList>();

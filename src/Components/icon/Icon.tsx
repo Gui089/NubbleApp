@@ -29,20 +29,22 @@ import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { TrashIcon } from "../../assets/icons/TrashIcon";
 import { Pressable } from "react-native";
+import { CheckRoundIcon } from "../../assets/icons/CheckRoundIcon";
+import { MessageRoundIcon } from "../../assets/icons/MessageRoundIcon";
 
 export interface IconBase {
     size?:number;
     color?: string;
 }
 
-interface Props {
+export interface IconProps {
     name: IconNames;
     color?: ThemeColors;
     size?: number;
     onPress?: () => void;
 }
 
-export function Icon({name, color = 'backgroundContrast', size, onPress} : Props) {
+export function Icon({name, color = 'backgroundContrast', size, onPress} : IconProps) {
     const { colors } = useAppTheme();
     const IconSvg = iconRegistry[name];
 
@@ -73,6 +75,7 @@ const iconRegistry = {
     chat: ChatIcon,
     chatOn: ChatOnIcon,
     check: CheckIcon,
+    checkRound: CheckRoundIcon,
     chevron: ChevronRightIcon,
     comment: CommentIcon,
     flashOff: FlashOffIcon,
@@ -87,7 +90,8 @@ const iconRegistry = {
     profile: ProfileIcon,
     search: SearchIcon,
     settings: SettingsIcon,
-    trash: TrashIcon
+    trash: TrashIcon,
+    messageRound: MessageRoundIcon
 }
 
 type IconType = typeof iconRegistry;
