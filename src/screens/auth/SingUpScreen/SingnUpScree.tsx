@@ -8,17 +8,20 @@ import { Box } from "../../../Components/Box/Box";
 import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../../routes/Routes";
+import { useResetNavigation } from "../../../hooks/useResetNavigation";
 
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
 export function SingUpScreen({navigation}: ScreenProps) {
+
+    const {resetNavigation} = useResetNavigation();
     
     const formSubmit = () => {
-        navigation.navigate('SuccessScreen', {
+        resetNavigation({
             title:'Sua conta foi criada com sucesso!',
             description:'Agora é só fazer login na nossa plataforma',
             icon: {
-                name: 'messageRound',
+                name: 'checkRound',
                 color: 'success'
             }
         });
