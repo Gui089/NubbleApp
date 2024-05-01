@@ -27,6 +27,8 @@ export function LoginScreen({navigation}: ScreenPros) {
     mode:'onChange'
   });
 
+  
+
   const formSubmit = ({email, password}: FormTypes) => {
       return (
         Alert.alert(`Seu e-mail: ${email} \n senha: ${password}`)
