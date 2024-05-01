@@ -9,6 +9,7 @@ import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../../routes/Routes";
 import { Controller, useForm } from "react-hook-form";
+import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
 
 
 type FormTypes = {
@@ -87,11 +88,10 @@ export function LoginScreen({navigation}: ScreenPros) {
             }}
             render={({field, fieldState}) => (
               <Box marginBottom='s20'>
-                <TextInput
+                <PasswordInput
                   errorMessage={fieldState.error?.message}
                   value={field.value}
                   onChangeText={field.onChange}
-                  RightComponent={<Icon color='gray2' name='eyeOn' />}
                   label='Senha'
                   placeholder='Digite sua senha' 
                 />
