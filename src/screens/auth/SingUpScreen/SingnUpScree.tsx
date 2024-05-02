@@ -1,15 +1,13 @@
 import React from "react";
 import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { Text } from "../../../Components/Text/Text";
-import { TextInput } from "../../../Components/TextInput/TextInput";
 import { Button } from "../../../Components/Button/Button";
-import { Box } from "../../../Components/Box/Box";
-import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../../routes/Routes";
 import { useResetNavigation } from "../../../hooks/useResetNavigation";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FormTextInput } from "../../../Components/Form/FormTextInput/FormTextInput";
+import { FormPasswordTextInput } from "../../../Components/Form/FormPasswordTextInput/FormPasswordTextInput";
 
 
 type SignUpFormType = {
@@ -59,28 +57,17 @@ export function SingUpScreen({navigation}: ScreenProps) {
             placeholder="@"
         />
 
-            
-            <Controller
-                control={control}
-                name="fullName"
-                rules={{
-                    required:'Nome é obrigatório'
-                }}
-                render={({field, fieldState}) => (
-                    <Box marginBottom="s24">
-                    <TextInput 
-                        value={field.value}
-                        errorMessage={fieldState.error?.message}
-                        onChangeText={field.onChange}
-                        label="Nome Completo" 
-                        placeholder="Digite seu nome completo"
-                    />
-                </Box>
-                )}
-            />
-            
-            
-            <Controller 
+        <FormTextInput
+            control={control}
+            name="fullName"
+            rules={{
+                required:'Nome é obrigatório'
+            }}
+            label="Nome Completo"
+            placeholder="Digite seu nome completo"
+        />
+
+        <FormTextInput
             control={control}
             name="email"
             rules={{
@@ -90,41 +77,24 @@ export function SingUpScreen({navigation}: ScreenProps) {
                 message:'E-mail inválido'
                 }
             }}
-            render={({field, fieldState}) => (
-                <Box marginBottom='s20'>
-                    <TextInput
-                        errorMessage={fieldState.error?.message}
-                        value={field.value}
-                        onChangeText={field.onChange}
-                        label='Email'
-                        placeholder='Digite seu e-mail' 
-                    />
-                </Box>
-                )}
-                />
+            label="Email"
+            placeholder="Digite seu e-mail"
+        />
 
-            <Controller
-                control={control}
-                name="password"
-                rules={{
-                    required:'senha obrigatória',
-                    minLength:{
-                        value:8,
-                        message:'Senha deve ter no mínimo 8 caracteres'
-                    }
-                }}
-                render={({field, fieldState}) => (
-                    <Box marginBottom='s20'>
-                        <PasswordInput
-                            errorMessage={fieldState.error?.message}
-                            value={field.value}
-                            onChangeText={field.onChange}
-                            label='Senha'
-                            placeholder='Digite sua senha' 
-                        />
-                    </Box>
-                )}
-                />  
+        <FormPasswordTextInput
+            control={control}
+            name="password"
+            rules={{
+                required:'senha obrigatória',
+                minLength:{
+                    value:8,
+                    message:'Senha deve ter no mínimo 8 caracteres'
+                }
+            }}
+            label="Senha"
+            placeholder="Digite sua senha"
+        />
+
 
             <Button disabled={!formState.isValid} onPress={handleSubmit(formSubmit)} preset="primary" title="Criar uma conta" />
         </ScreenComponent>

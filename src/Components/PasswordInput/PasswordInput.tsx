@@ -3,7 +3,7 @@ import { Box } from "../Box/Box";
 import { TextInput, TextInputProps } from "../TextInput/TextInput";
 import { Icon } from "../icon/Icon";
 
-type PasswordInputProps = Omit<TextInputProps, 'RightComponent'>;
+export type PasswordInputProps = Omit<TextInputProps, 'RightComponent'>;
 
 export function PasswordInput(props : PasswordInputProps) {
 

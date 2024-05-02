@@ -8,8 +8,7 @@ export function FormTextInput<FormType extends FieldValues>(
         control, 
         name, 
         rules, 
-        ...textInputPros}: TextInputProps
-    & UseControllerProps<FormType>){
+        ...textInputPros}: TextInputProps & UseControllerProps<FormType>){
     return (
         <Controller
                 control={control}
