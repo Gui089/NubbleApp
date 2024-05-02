@@ -3,7 +3,6 @@ import { Alert, SafeAreaView, View } from "react-native";
 import { Text } from "../../../Components/Text/Text";
 import { Box, TouchableOpacityBox } from "../../../Components/Box/Box";
 import { TextInput } from "../../../Components/TextInput/TextInput";
-import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
 import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";

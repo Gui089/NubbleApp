@@ -2,7 +2,6 @@ import React from "react";
 import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { Text } from "../../../Components/Text/Text";
 import { TextInput } from "../../../Components/TextInput/TextInput";
-import { Icon } from "../../../Components/icon/Icon";
 import { Button } from "../../../Components/Button/Button";
 import { Box } from "../../../Components/Box/Box";
 import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
@@ -10,6 +9,7 @@ import { NativeStackScreenProps } from "react-native-screens/lib/typescript/nati
 import { RootStackParamList } from "../../../routes/Routes";
 import { useResetNavigation } from "../../../hooks/useResetNavigation";
 import { Controller, useForm } from "react-hook-form";
+import { FormTextInput } from "../../../Components/Form/FormTextInput/FormTextInput";
 
 
 type SignUpFormType = {
@@ -35,8 +35,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
     
     const formSubmit = (formValues: SignUpFormType) => {
 
-        
-
         resetNavigation({
             title:`Bem-vindo ${formValues.userName}`,
             description:'Agora é só fazer login na nossa plataforma',
@@ -51,25 +49,16 @@ export function SingUpScreen({navigation}: ScreenProps) {
         <ScreenComponent changeGoBack scrollable>
             <Text preset="headingLarge" mb="s32">Criar uma Conta</Text>
 
+        <FormTextInput
+            control={control}
+            name="userName"
+            rules={{
+                required: 'Username é obrigatório'
+            }}
+            label="Seu Username"
+            placeholder="@"
+        />
 
-            <Controller
-                control={control}
-                name="userName"
-                rules={{
-                    required: 'Username é obrigatório'
-                }}
-                render={({field, fieldState}) => (
-                    <Box marginBottom="s24">
-                    <TextInput
-                        value={field.value} 
-                        onChangeText={field.onChange}
-                        errorMessage={fieldState.error?.message}
-                        label="Seu Username" 
-                        placeholder="@"
-                    />
-                </Box>
-                )}
-            />
             
             <Controller
                 control={control}
