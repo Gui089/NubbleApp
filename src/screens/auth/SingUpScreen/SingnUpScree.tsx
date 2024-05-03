@@ -1,6 +1,8 @@
 import React from "react";
 import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { Text } from "../../../Components/Text/Text";
+import { SignUpSchema, signUpSchema } from "./SignUpSchema";
+import {zodResolver} from '@hookform/resolvers/zod'
 import { Button } from "../../../Components/Button/Button";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../../routes/Routes";
@@ -10,18 +12,14 @@ import { FormTextInput } from "../../../Components/Form/FormTextInput/FormTextIn
 import { FormPasswordTextInput } from "../../../Components/Form/FormPasswordTextInput/FormPasswordTextInput";
 
 
-type SignUpFormType = {
-    userName: string;
-    fullName: string;
-    email: string;
-    password: string;
-}
+
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
 export function SingUpScreen({navigation}: ScreenProps) {
 
     const {resetNavigation} = useResetNavigation();
 
-    const {control, formState, handleSubmit} = useForm<SignUpFormType>({
+    const {control, formState, handleSubmit} = useForm<SignUpSchema>({
+        resolver: zodResolver(signUpSchema),
         defaultValues:{
             userName:'',
             fullName:'',
@@ -31,7 +29,7 @@ export function SingUpScreen({navigation}: ScreenProps) {
         mode:'onChange'
     });
     
-    const formSubmit = (formValues: SignUpFormType) => {
+    const formSubmit = (formValues: SignUpSchema) => {
 
         resetNavigation({
             title:`Bem-vindo ${formValues.userName}`,
@@ -50,9 +48,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         <FormTextInput
             control={control}
             name="userName"
-            rules={{
-                required: 'Username é obrigatório'
-            }}
             label="Seu Username"
             placeholder="@"
         />
@@ -60,9 +55,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         <FormTextInput
             control={control}
             name="fullName"
-            rules={{
-                required:'Nome é obrigatório'
-            }}
             label="Nome Completo"
             placeholder="Digite seu nome completo"
         />
@@ -70,13 +62,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         <FormTextInput
             control={control}
             name="email"
-            rules={{
-                required: 'E-mail é obrigatório',
-                pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                message:'E-mail inválido'
-                }
-            }}
             label="Email"
             placeholder="Digite seu e-mail"
         />
@@ -84,13 +69,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         <FormPasswordTextInput
             control={control}
             name="password"
-            rules={{
-                required:'senha obrigatória',
-                minLength:{
-                    value:8,
-                    message:'Senha deve ter no mínimo 8 caracteres'
-                }
-            }}
             label="Senha"
             placeholder="Digite sua senha"
         />
