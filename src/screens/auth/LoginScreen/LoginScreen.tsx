@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, SafeAreaView, View } from "react-native";
 import { Text } from "../../../Components/Text/Text";
+import {zodResolver} from '@hookform/resolvers/zod'
 import { Box, TouchableOpacityBox } from "../../../Components/Box/Box";
 import { TextInput } from "../../../Components/TextInput/TextInput";
 import { Button } from "../../../Components/Button/Button";
@@ -9,16 +10,13 @@ import { NativeStackScreenProps } from "react-native-screens/lib/typescript/nati
 import { RootStackParamList } from "../../../routes/Routes";
 import { Controller, useForm } from "react-hook-form";
 import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
+import { LoginSchema, loginSchema } from "./LoginSchema";
 
-
-type FormTypes = {
-  email: string;
-  password: string;
-}
 type ScreenPros = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>
 export function LoginScreen({navigation}: ScreenPros) {
 
-  const {control, handleSubmit, formState} = useForm<FormTypes>({
+  const {control, handleSubmit, formState} = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues:{
       email:'',
       password:''
@@ -28,7 +26,7 @@ export function LoginScreen({navigation}: ScreenPros) {
 
   
 
-  const formSubmit = ({email, password}: FormTypes) => {
+  const formSubmit = ({email, password}: LoginSchema) => {
       return (
         Alert.alert(`Seu e-mail: ${email} \n senha: ${password}`)
       )
@@ -57,13 +55,6 @@ export function LoginScreen({navigation}: ScreenPros) {
           <Controller 
             control={control}
             name="email"
-            rules={{
-              required: 'E-mail é obrigatório',
-              pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                message:'E-mail inválido'
-              }
-            }}
             render={({field, fieldState}) => (
               <Box marginBottom='s20'>
                 <TextInput
@@ -80,15 +71,8 @@ export function LoginScreen({navigation}: ScreenPros) {
           <Controller
             control={control}
             name="password"
-            rules={{
-              required:'senha obrigatória',
-              minLength:{
-                value:8,
-                message:'Senha deve ter no mínimo 8 caracteres'
-              }
-            }}
             render={({field, fieldState}) => (
-              <Box marginBottom='s20'>
+              <Box >
                 <PasswordInput
                   errorMessage={fieldState.error?.message}
                   value={field.value}
@@ -100,7 +84,7 @@ export function LoginScreen({navigation}: ScreenPros) {
             )}
           />  
             <TouchableOpacityBox hitSlop={10} onPress={goToForgotPassword}>
-              <Text bold marginTop='s10' color='primary' preset='paragraphSmall'>Esqueci minhan senha</Text>
+              <Text bold color='primary' preset='paragraphSmall'>Esqueci minhan senha</Text>
             </TouchableOpacityBox>
 
             <Button 

@@ -12,7 +12,6 @@ import { FormTextInput } from "../../../Components/Form/FormTextInput/FormTextIn
 import { FormPasswordTextInput } from "../../../Components/Form/FormPasswordTextInput/FormPasswordTextInput";
 
 
-
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
 export function SingUpScreen({navigation}: ScreenProps) {
 
