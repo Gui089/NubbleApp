@@ -9,10 +9,7 @@ import {
     ForgotPasswordScreen
 } from "@screens";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppStack } from "./AppStack";
-import { AuthStack } from "./AuthStack";
 
 export type RootStackParamList = {
     LoginScreen: undefined,
@@ -32,18 +29,19 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export function Router() {
-
-    const userAuthentic = false;
+export function AuthStack() {
 
     return (
-        <NavigationContainer>
-                { userAuthentic ? (
-                    <AppStack />
-                ) : (
-                    <AuthStack />
-                    ) 
-                }
-        </NavigationContainer>
+                <Stack.Navigator
+                        initialRouteName="LoginScreen"
+                        screenOptions={{
+                            headerShown: false,
+                        }}
+                        > 
+                    <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+                        <Stack.Screen name="SignUpScreen" component={SingUpScreen}/>
+                        <Stack.Screen name="SuccessScreen" component={SuccessScreen}/>
+                        <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+                    </Stack.Navigator>
     )
 }
