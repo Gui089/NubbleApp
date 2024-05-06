@@ -1,16 +1,20 @@
 import React from "react";
-import { ScreenComponent } from "../../../Components/Screen/Screen";
-import { Text } from "../../../Components/Text/Text";
-import { SignUpSchema, signUpSchema } from "./SignUpSchema";
-import {zodResolver} from '@hookform/resolvers/zod'
-import { Button } from "../../../Components/Button/Button";
-import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
-import { RootStackParamList } from "../../../routes/Routes";
-import { useResetNavigation } from "../../../hooks/useResetNavigation";
-import { useForm } from "react-hook-form";
-import { FormTextInput } from "../../../Components/Form/FormTextInput/FormTextInput";
-import { FormPasswordTextInput } from "../../../Components/Form/FormPasswordTextInput/FormPasswordTextInput";
 
+import { useForm } from "react-hook-form";
+import { SignUpSchema, signUpSchema } from "./SignUpSchema";
+import {zodResolver} from '@hookform/resolvers/zod';
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+
+import { 
+    ScreenComponent,
+    Text,
+    Button,
+    FormTextInput,
+    FormPasswordTextInput
+} from "@Components";
+
+import { RootStackParamList } from "@routes";
+import { useResetNavigation } from '@hooks';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
 export function SingUpScreen({navigation}: ScreenProps) {

@@ -8,12 +8,13 @@ import {
   PasswordInput,
   TouchableOpacityBox,
   Button
-} from "@Components"
+} from "@Components";
+
+import { RootStackParamList } from "@routes";
 
 import { Alert, SafeAreaView, View } from "react-native";
-import {zodResolver} from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
-import { RootStackParamList } from "../../../routes/Routes";
 import { Controller, useForm } from "react-hook-form";
 import { LoginSchema, loginSchema } from "./LoginSchema";
 

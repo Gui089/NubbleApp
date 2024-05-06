@@ -1,11 +1,18 @@
 import React from "react";
-import { Box, TouchableOpacityBox } from "../Box/Box";
-import { useAppSafeArea } from "../../hooks/useAppSafeArea";
-import { Icon } from "../icon/Icon";
-import { Text } from "../Text/Text";
+
+import { 
+    Box, 
+    TouchableOpacityBox, 
+    Icon,
+    Text,
+    ScrollViewContainer, 
+    ViewContainer
+} from "@Components";
+
+import { useAppSafeArea, useAppTheme } from "@hooks";
+
 import { KeyboardAvoidingView, Platform} from "react-native";
-import { ScrollViewContainer, ViewContainer } from "./Components/ScreenContainer";
-import { useAppTheme } from "../../hooks/useAppTheme";
+
 import { useNavigation } from "@react-navigation/native";
 
 interface Props {
