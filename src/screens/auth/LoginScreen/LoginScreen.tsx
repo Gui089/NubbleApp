@@ -1,16 +1,22 @@
 import React from "react";
+
+import {
+  ScreenComponent,
+  Text,
+  TextInput,
+  Box,
+  PasswordInput,
+  TouchableOpacityBox,
+  Button
+} from "@Components"
+
 import { Alert, SafeAreaView, View } from "react-native";
-import { Text } from "../../../Components/Text/Text";
 import {zodResolver} from '@hookform/resolvers/zod'
-import { Box, TouchableOpacityBox } from "../../../Components/Box/Box";
-import { TextInput } from "../../../Components/TextInput/TextInput";
-import { Button } from "../../../Components/Button/Button";
-import { ScreenComponent } from "../../../Components/Screen/Screen";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../../routes/Routes";
 import { Controller, useForm } from "react-hook-form";
-import { PasswordInput } from "../../../Components/PasswordInput/PasswordInput";
 import { LoginSchema, loginSchema } from "./LoginSchema";
+
 
 type ScreenPros = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>
 export function LoginScreen({navigation}: ScreenPros) {
