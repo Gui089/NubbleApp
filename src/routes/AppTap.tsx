@@ -2,6 +2,7 @@ import React from "react";
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FavoriteScreen, HomeScreen, MyProfileScreen, NewPostScreen } from "@screens";
+import { Icon, Text } from "@Components";
 
 export type AppTabBottomTabParams = {
     HomeScreen: undefined,
@@ -19,10 +20,24 @@ export function AppTabNavigator() {
             headerShown: false
         }}
     >
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen options={{
+        tabBarLabel: ({focused}) => <Text 
+            semiBold
+            color={focused ? 'primary' : 'backgroundContrast'}
+            preset="paragraphCaption"
+            >
+                Início
+            </Text>,
+        tabBarIcon: ({focused}) => <Icon 
+            color={focused ? 'primary' : 'backgroundContrast'}
+            name={focused ? 'homeFill' : 'home'}
+            />
+        }} 
+        name="HomeScreen"
+        component={HomeScreen} />
+      <Tab.Screen name="NewPostScreen" component={NewPostScreen} />
       <Tab.Screen name="FavoriteScreen" component={FavoriteScreen} />
       <Tab.Screen name="MyProfileScreen" component={MyProfileScreen} />
-      <Tab.Screen name="NewPostScreen" component={NewPostScreen} />
     </Tab.Navigator>
   );
 }
