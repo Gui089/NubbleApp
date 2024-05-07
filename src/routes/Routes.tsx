@@ -2,13 +2,6 @@ import React from "react";
 
 import { IconProps } from "@Components";
 
-import { 
-    LoginScreen,
-    SingUpScreen,
-    SuccessScreen,
-    ForgotPasswordScreen
-} from "@screens";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppStack } from "./AppStack";
