@@ -9,3 +9,5 @@ declare global {
   }
 
 export type AppScreenProps<RoutName extends keyof AppStackParams> = NativeStackScreenProps<AppStackParams, RoutName>
+
+export type AuthScreenProps<RoutName extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, RoutName>

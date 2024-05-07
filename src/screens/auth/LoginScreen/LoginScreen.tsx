@@ -10,17 +10,15 @@ import {
   Button
 } from "@Components";
 
-import { RootStackParamList } from "@routes";
 
 import { Alert, SafeAreaView, View } from "react-native";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { Controller, useForm } from "react-hook-form";
 import { LoginSchema, loginSchema } from "./LoginSchema";
+import { AuthScreenProps } from "src/routes/navigationTypes";
 
 
-type ScreenPros = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>
-export function LoginScreen({navigation}: ScreenPros) {
+export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
 
   const {control, handleSubmit, formState} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),

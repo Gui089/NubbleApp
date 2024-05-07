@@ -12,14 +12,10 @@ import {
     FormTextInput
 } from '@Components';
 
-import { RootStackParamList } from '@routes';
-
 import { useResetNavigation } from "@hooks";
+import { AuthScreenProps } from "src/routes/navigationTypes";
 
-
-type ScreeProps = NativeStackScreenProps<RootStackParamList, 'ForgotPasswordScreen'>
-
-export const ForgotPasswordScreen  = ({route, navigation}: ScreeProps) => {
+export const ForgotPasswordScreen  = ({route, navigation}: AuthScreenProps<'ForgotPasswordScreen'>) => {
     const {resetNavigation} = useResetNavigation();
 
     const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({

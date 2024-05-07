@@ -3,7 +3,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { SignUpSchema, signUpSchema } from "./SignUpSchema";
 import {zodResolver} from '@hookform/resolvers/zod';
-import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
 import { 
     ScreenComponent,
@@ -13,11 +12,10 @@ import {
     FormPasswordTextInput
 } from "@Components";
 
-import { RootStackParamList } from "@routes";
 import { useResetNavigation } from '@hooks';
+import { AuthScreenProps } from "src/routes/navigationTypes";
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>
-export function SingUpScreen({navigation}: ScreenProps) {
+export function SingUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
 
     const {resetNavigation} = useResetNavigation();
 

@@ -1,7 +1,5 @@
 import React from "react";
 
-import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
-
 import {
     ScreenComponent,
     Icon,
@@ -9,11 +7,9 @@ import {
     Text
 } from "@Components";
 
-import { RootStackParamList } from "@routes";
+import { AuthScreenProps } from "src/routes/navigationTypes";
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>
-
-export const SuccessScreen = ({route, navigation}: ScreenProps) => {
+export const SuccessScreen = ({route, navigation}: AuthScreenProps<'SuccessScreen'>) => {
 
     const changeGoback = () => {
         navigation.goBack();
