@@ -1,18 +1,24 @@
 import React from "react";
 
 import { Button, ScreenComponent, Text } from "@Components";
-import { AppScreenProps } from "src/routes/navigationTypes";
+import { AppTabScreenProps } from "src/routes/navigationTypes";
 
-export const HomeScreen = ({navigation}: AppScreenProps<'HomeScreen'>) => {
+export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
 
-    const goToSettings = () => {
-        navigation.navigate('SettingsScreen');
+    const goToMyProfile = () => {
+        navigation.navigate('AppTabNavigator', {
+            screen:'MyProfileScreen'
+        });
     }
 
     return (
         <ScreenComponent>
             <Text preset="headingLarge">Home Screen</Text>
-            <Button onPress={goToSettings} title="Settings" />
+            <Button 
+                mb="s20"
+                title="Settings" 
+                onPress={() => navigation.navigate('SettingsScreen')} />
+            <Button onPress={goToMyProfile} title="MyProfile" />
         </ScreenComponent>
     )
 }

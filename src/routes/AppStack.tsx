@@ -1,12 +1,13 @@
 import React from "react";
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen, SettingsScreen } from "@screens";
-import { AppTabNavigator } from "@routes";
+import { SettingsScreen } from "@screens";
+import { AppTabBottomTabParams, AppTabNavigator } from "@routes";
+import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type AppStackParams = {
-    AppTabNavigator: undefined
-    SettingsScreen: undefined
+    AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParams>;
+    SettingsScreen: undefined;
 }
 
 const Stack = createStackNavigator<AppStackParams>();
