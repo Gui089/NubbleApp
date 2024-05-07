@@ -27,7 +27,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export function Router() {
 
-    const userAuthentic = false;
+    const userAuthentic = true;
 
     return (
         <NavigationContainer>
