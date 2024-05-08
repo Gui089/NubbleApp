@@ -2,13 +2,24 @@ import { Box, Icon, Text, TouchableOpacityBox } from '@Components';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { AppIconBottom } from './AppIconBottom';
 import { AppTabBottomTabParams } from './AppTap';
+import { useAppSafeArea } from '@hooks';
+import { ViewStyle } from 'react-native';
+
+const $shadowProps: ViewStyle = {
+    elevation: 9,
+}
 
 export function AppBottomTab({ state, descriptors, navigation }: BottomTabBarProps) {
+
+    const {bottom} = useAppSafeArea();
+
   return (
-    <Box flexDirection='row'>
+    <Box 
+        paddingTop='s16' backgroundColor='background' 
+        style={[{paddingBottom: bottom}, $shadowProps]} flexDirection='row'>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        
+
         const tabItem = AppIconBottom[route.name as keyof 
             AppTabBottomTabParams];
 
@@ -35,7 +46,7 @@ export function AppBottomTab({ state, descriptors, navigation }: BottomTabBarPro
 
         return (
           <TouchableOpacityBox
-            height={60}
+            activeOpacity={1}
             justifyContent='center'
             alignItems='center'
             accessibilityRole="button"
