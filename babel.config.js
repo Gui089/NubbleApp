@@ -8,7 +8,8 @@ module.exports = {
         '@hooks': './src/hooks',
         '@routes': './src/routes',
         '@screens': './src/screens',
-        '@theme':'./src/theme'
+        '@theme':'./src/theme',
+        '@domain':'./src/domain'
       }
     }]
   ]

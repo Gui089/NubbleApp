@@ -1,24 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { Button, ScreenComponent, Text } from "@Components";
+import { ScreenComponent, Text } from "@Components";
 import { AppTabScreenProps } from "src/routes/navigationTypes";
+import { Post, postService } from "@domain";
+
 
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
 
-    const goToMyProfile = () => {
-        navigation.navigate('AppTabNavigator', {
-            screen:'MyProfileScreen'
-        });
-    }
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    useEffect(() => {
+        postService.getList().then(( list ) => setPosts(list));
+    })
 
     return (
         <ScreenComponent>
-            <Text preset="headingLarge">Home Screen</Text>
-            <Button 
-                mb="s20"
-                title="Settings" 
-                onPress={() => navigation.navigate('SettingsScreen')} />
-            <Button onPress={goToMyProfile} title="MyProfile" />
+            {posts.map(post => <Text>{post.text}</Text>)}
         </ScreenComponent>
     )
 }
