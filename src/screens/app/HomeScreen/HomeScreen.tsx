@@ -7,12 +7,11 @@ import { FlatList } from "react-native-gesture-handler";
 import { ListRenderItemInfo } from "react-native";
 
 
-
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
 
     const [posts, setPosts] = useState<Post[]>([]);
 
-    const renderItem = ({item}: ListRenderItemInfo<Post>) => {
+    const renderItem = ({ item }: ListRenderItemInfo<Post>) => {
         return (
             <PostItem post={item}/>
         )

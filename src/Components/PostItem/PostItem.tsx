@@ -3,9 +3,9 @@ import React from "react";
 import { Box } from "@Components";
 import { Post } from "@domain";
 
-import { Dimensions, Image } from "react-native";
 import { PostHeader } from "./Components/PostHeader";
 import { PostImage } from "./Components/PostImage";
+import { PostActions } from "./Components/PostActions";
 
 interface Props {
     post: Post;
@@ -15,6 +15,7 @@ export const PostItem = ({post}: Props) => {
         <Box mb="s24">
             <PostHeader author={post.author}/>
             <PostImage imageURL={post.imageURL}/>
+            <PostActions commentCount={post.commentCount} favoriteCount={post.favoriteCount} reactionCount={post.reactionCount}/>
         </Box>
     )
 }
