@@ -1,6 +1,7 @@
+import React from "react";
 import { Box, BoxProps, Icon } from "@Components";
 import { useAppSafeArea } from "@hooks";
-import React from "react";
+import { SimpleLogo } from "../../../../brand/SimpleLogo";
 
 export const HomeHeader = () => {
 
@@ -11,11 +12,11 @@ export const HomeHeader = () => {
             {...$wrapper}
             style={{padding: top}}
             >
-            <Box 
+           {/*  <Box 
                 backgroundColor="carrotSecondary" 
                 width={70} 
-                height={16} />
-
+                height={16} /> */}
+            <SimpleLogo width={70}/>
             <Box flexDirection="row">
                 <Box mr="s24">
                     <Icon name="search" />
@@ -30,7 +31,6 @@ export const HomeHeader = () => {
 }
 
 const $wrapper: BoxProps = {
-    backgroundColor:"carrotSecondaryLight",
     flexDirection:"row",
     justifyContent:"space-between"
 }
