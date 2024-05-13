@@ -5,14 +5,7 @@ import { Post } from "@domain";
 type PostBottomProps = Pick<Post, 'author' | 'commentCount' | 'text'>
 export const PostBottom = ({author, commentCount, text}: PostBottomProps) => {
 
-    let commentText;
-    if(commentCount === 0) {
-        commentText = ''
-    } else if(commentCount === 1) {
-        commentText = 'Ver comentário'
-    }else {
-        commentText = `Ver ${commentCount} comentários`
-    }
+    const commentText = getCommentCount(commentCount);
 
     return (
         <Box mt="s16">
@@ -24,4 +17,14 @@ export const PostBottom = ({author, commentCount, text}: PostBottomProps) => {
             </TouchableOpacityBox>}
         </Box>
     )
+}
+
+function getCommentCount(commentCount: number): string | null {
+    if(commentCount === 0) {
+       return null;
+    } else if(commentCount === 1) {
+        return 'Ver comentário'
+    }else {
+        return `Ver ${commentCount} comentários`
+    }
 }

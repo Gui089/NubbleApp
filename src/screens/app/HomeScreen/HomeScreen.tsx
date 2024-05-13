@@ -5,6 +5,7 @@ import { AppTabScreenProps } from "src/routes/navigationTypes";
 import { Post, postService } from "@domain";
 import { FlatList } from "react-native-gesture-handler";
 import { ListRenderItemInfo } from "react-native";
+import { HomeHeader } from "./Components/HomeHeader";
 
 
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
@@ -28,6 +29,7 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
                 data={posts}
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
+                ListHeaderComponent={HomeHeader}
                 />
         </ScreenComponent>
     )
