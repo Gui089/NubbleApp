@@ -6,7 +6,8 @@ import {
     Icon,
     Text,
     ScrollViewContainer, 
-    ViewContainer
+    ViewContainer,
+    BoxProps
 } from "@Components";
 
 import { useAppSafeArea, useAppTheme } from "@hooks";
@@ -15,13 +16,18 @@ import { KeyboardAvoidingView, Platform} from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
-interface Props {
+interface Props extends BoxProps{
     children: React.ReactNode;
     changeGoBack?: boolean;
     scrollable?: boolean;
 }
 
-export function ScreenComponent({children, changeGoBack = false, scrollable = false}: Props) {
+export function ScreenComponent({
+    children, 
+    changeGoBack = false, 
+    scrollable = false,
+    style,
+    ...BoxProps}: Props) {
 
 
     const {top, bottom} = useAppSafeArea();
@@ -36,7 +42,7 @@ export function ScreenComponent({children, changeGoBack = false, scrollable = fa
                 <Box 
                     paddingBottom="s24"
                     paddingHorizontal="s24" 
-                    style={{padding: top, paddingBottom: bottom}}>
+                    style={[{padding: top, paddingBottom: bottom}, style]}>
                     {changeGoBack && 
                     <TouchableOpacityBox onPress={navigation.goBack} flexDirection="row" mb="s40">
                         <Icon name="arrowLeft" color="primary"/>

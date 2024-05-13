@@ -22,7 +22,7 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
     })
 
     return (
-        <ScreenComponent>
+        <ScreenComponent style={{paddingBottom:0, paddingHorizontal:0, paddingTop:0}}>
             <FlatList 
                 data={posts}
                 keyExtractor={(item) => item.id}
