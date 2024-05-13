@@ -19,7 +19,7 @@ export const PostActions = ({commentCount, favoriteCount, reactionCount}: PostAc
     }
 
     return (
-        <Box flexDirection="row" mt="s16">
+        <Box style={{marginHorizontal:-18}} flexDirection="row" mt="s16">
             <Item
             onPress={likePost}
             market

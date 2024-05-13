@@ -9,7 +9,9 @@ export const PostImage = ({imageURL}: PostImageProps) => {
             resizeMode="cover"
             style={{
                 width: Dimensions.get('screen').width, 
-                height:300}} 
+                height:300,
+                marginHorizontal:-24,
+            }} 
                 source={{uri: imageURL}}
             />
     )
