@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import {  PostItem, ScreenComponent } from "@Components";
 import { AppTabScreenProps } from "src/routes/navigationTypes";
-import { Post, postService } from "@domain";
+import { postService } from "@domain";
 import { FlatList } from "react-native-gesture-handler";
 import { ListRenderItemInfo } from "react-native";
 import { HomeHeader } from "./Components/HomeHeader";
+import { Post } from "src/domain/Post/postTypes";
 
 
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
@@ -20,7 +21,7 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
 
     useEffect(() => {
         postService.getList().then(( list ) => setPosts(list));
-    })
+    }, []);
 
     return (
         <ScreenComponent style={{paddingBottom:0, paddingHorizontal:0, paddingTop:0}}>
