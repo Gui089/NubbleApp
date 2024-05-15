@@ -46,6 +46,7 @@ export function AppBottomTab({ state, descriptors, navigation }: BottomTabBarPro
 
         return (
           <TouchableOpacityBox
+            key={route.name}
             activeOpacity={1}
             justifyContent='center'
             alignItems='center'

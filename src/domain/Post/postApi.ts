@@ -8,7 +8,7 @@ async function getList(): Promise<PageAPI<PostApi>> {
     method: 'GET',
     headers: {
         Authorization:
-        'Bearer NA.oaFGnUyqf4jQgGrB7wgI5SXYQMC9BGGXtjKsh3Jow7rwekCz2w7H444EDQy0',
+        'Bearer Ng.liYF1q8O-hUmAvDI5xgh_Bz6iJcDzhSKf1yfCe4_BoipBkaUovBsx9mhBUsN',
     },
     });
 

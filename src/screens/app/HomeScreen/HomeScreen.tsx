@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {  PostItem, ScreenComponent } from "@Components";
 import { AppTabScreenProps } from "src/routes/navigationTypes";
 import { postService } from "@domain";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList } from "react-native";
 import { ListRenderItemInfo } from "react-native";
 import { HomeHeader } from "./Components/HomeHeader";
 import { Post } from "src/domain/Post/postTypes";
@@ -16,7 +16,7 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
     const renderItem = ({ item }: ListRenderItemInfo<Post>) => {
         return (
             <PostItem post={item}/>
-        )
+        );
     }
 
     useEffect(() => {
@@ -33,5 +33,5 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
                 ListHeaderComponent={HomeHeader}
                 />
         </ScreenComponent>
-    )
+    );
 }
