@@ -1,6 +1,5 @@
 /** 
  * @description funcao para a adaptar o postApi para o post service 
- * 
  */
 
 import { Post, PostApi } from "./postTypes"
