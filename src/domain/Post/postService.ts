@@ -3,8 +3,8 @@ import { postAdapter } from "./postAdapter";
 import { postApi } from "./postApi";
 import { Post } from "./postTypes";
 
-async function getList():Promise<Post[]> {
-    const postPageApi = await postApi.getList();
+async function getList(page: number):Promise<Post[]> {
+    const postPageApi = await postApi.getList({page, per_page: 10});
 
     return postPageApi.data.map(postAdapter.toPost);
 }

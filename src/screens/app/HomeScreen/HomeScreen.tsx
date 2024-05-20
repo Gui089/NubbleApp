@@ -11,7 +11,7 @@ import { usePostList } from "@domain";
 
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
 
-    const {posts, error, loading, refetch} = usePostList()
+    const {posts, error, loading, refetch, fetchNextPage} = usePostList()
 
     const renderItem = ({ item }: ListRenderItemInfo<Post>) => {
         return (
@@ -27,6 +27,8 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
                 data={posts}
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
+                onEndReached={fetchNextPage}
+                onEndReachedThreshold={0.1}
                 style={{flex: posts.length === 0 ? 1 : undefined}}
                 ListHeaderComponent={HomeHeader}
                 ListEmptyComponent={<HomeEmpty error={error} loading={loading} reload={refetch}/>}
