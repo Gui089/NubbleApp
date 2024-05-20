@@ -9,12 +9,12 @@ export const usePostList = () => {
     const [error, setError] = useState<boolean>(false);
     const [page, setPage] = useState(1);
 
-    const fetchData =  async () => {
+    const fetchInitialData =  async () => {
         try {
             setLoading(true);
-            const list = await postService.getList(page);
-            setPage(prev => prev + 1);
-            setPosts(prev => [...prev, ...list]);
+            const list = await postService.getList(1);
+            setPage(2);
+            setPosts(list);
         }catch (error) {
             console.log('ERROR:', error);
         } finally {
@@ -22,21 +22,29 @@ export const usePostList = () => {
         }
     }
 
-    function fetchNextPage() {
-        if(!loading) {
-            fetchData();
+    async function fetchNextPage() {
+        if(loading) return;
+        try {
+            setLoading(true);
+            const list = await postService.getList(page);
+            setPosts(prev => [...prev, ...list]);
+            setPage(prev => prev + 1);
+        } catch(err) {
+            setError(true);
+        } finally {
+            setLoading(false);
         }
     }
 
     useEffect(() => {
-        fetchData();
+        fetchInitialData();
     }, []);
 
     return {
         posts,
         loading,
         error,
-        refetch: fetchData,
+        refresh: fetchInitialData,
         fetchNextPage
     }
 }
