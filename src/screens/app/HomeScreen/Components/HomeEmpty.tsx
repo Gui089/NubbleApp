@@ -22,7 +22,7 @@ export const HomeEmpty = ({error, loading, reload}: Props) => {
     if(error) {
         <>
             <Text>Algo deu errado!</Text>
-            <Button preset="outline" title="Recarregar"/>
+            <Button onPress={reload} preset="outline" title="Recarregar"/>
         </>
     }
     
