@@ -8,13 +8,19 @@ export const usePostList = () => {
     const [loading, setLoading] =  useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [page, setPage] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(true);
 
     const fetchInitialData =  async () => {
         try {
             setLoading(true);
-            const list = await postService.getList(1);
-            setPage(2);
-            setPosts(list);
+            const {data, meta} = await postService.getList(1);
+            setPosts(data);
+            if(meta.hasNextPage) {
+                setPage(2);
+                setHasNextPage(true);
+            } else {
+                setHasNextPage(false);
+            }
         }catch (error) {
             console.log('ERROR:', error);
         } finally {
@@ -23,12 +29,19 @@ export const usePostList = () => {
     }
 
     async function fetchNextPage() {
-        if(loading) return;
+        if(loading || !hasNextPage) {
+            return;
+        }
+            
         try {
             setLoading(true);
-            const list = await postService.getList(page);
-            setPosts(prev => [...prev, ...list]);
-            setPage(prev => prev + 1);
+            const {data, meta} = await postService.getList(page);
+            setPosts(prev => [...prev, ...data]);
+            if(meta.hasNextPage) {
+                setPage(prev => prev + 1);
+            } else {
+                setHasNextPage(false);
+            }
         } catch(err) {
             setError(true);
         } finally {
