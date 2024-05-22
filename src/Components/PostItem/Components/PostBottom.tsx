@@ -1,9 +1,20 @@
 import React from "react";
 import { Box, Text, TouchableOpacityBox } from "@Components";
 import { Post } from "@domain";
+import { useNavigation } from "@react-navigation/native";
 
-type PostBottomProps = Pick<Post, 'author' | 'commentCount' | 'text'>
-export const PostBottom = ({author, commentCount, text}: PostBottomProps) => {
+
+type PostBottomProps = Pick<Post, 'author' | 'commentCount' | 'text' | 'id'>
+export const PostBottom = ({author, commentCount, text, id}: PostBottomProps) => {
+
+    const navigation = useNavigation();
+
+    const goToPostCommentScreen = () => {
+        navigation.navigate('PostCommentScreen', {
+            postId: id,
+        })
+    } 
+
 
     const commentText = getCommentCount(commentCount);
 
@@ -13,7 +24,7 @@ export const PostBottom = ({author, commentCount, text}: PostBottomProps) => {
             <Text mt="s4" preset="paragraphMedium" color="gray1">{text}</Text>
 
             { commentText &&  <TouchableOpacityBox mt="s8">
-                <Text preset="paragraphSmall" color="greenPrimary" bold>{commentText}</Text>
+                <Text onPress={goToPostCommentScreen} preset="paragraphSmall" color="greenPrimary" bold>{commentText}</Text>
             </TouchableOpacityBox>}
         </Box>
     )

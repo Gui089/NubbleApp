@@ -17,7 +17,12 @@ export const PostItem = ({post}: Props) => {
             <PostHeader author={post.author}/>
             <PostImage imageURL={post.imageURL}/>
             <PostActions commentCount={post.commentCount} favoriteCount={post.favoriteCount} reactionCount={post.reactionCount}/>
-            <PostBottom author={post.author} commentCount={post.commentCount} text={post.text}/>
+            <PostBottom 
+                author={post.author} 
+                commentCount={post.commentCount} 
+                text={post.text} 
+                id={post.id}
+                />
         </Box>
     )
 }

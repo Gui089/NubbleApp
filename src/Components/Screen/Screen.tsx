@@ -20,6 +20,7 @@ interface Props extends BoxProps{
     children: React.ReactNode;
     changeGoBack?: boolean;
     scrollable?: boolean;
+    title?: string;
 }
 
 export function ScreenComponent({

@@ -3,7 +3,6 @@ import React from "react";
 import { IconProps } from "@Components";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from '@react-navigation/stack';
 import { AppStack } from "./AppStack";
 import { AuthStack } from "./AuthStack";
 
@@ -21,9 +20,11 @@ export type RootStackParamList = {
         labelInput: string,
         placeholderInput: string
     },
+    PostCommentScreen: {
+        postId: string,
+    }
 }
 
-const Stack = createStackNavigator<RootStackParamList>();
 
 export function Router() {
 
