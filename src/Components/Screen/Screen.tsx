@@ -28,6 +28,7 @@ export function ScreenComponent({
     changeGoBack = false, 
     scrollable = false,
     style,
+    title,
     ...BoxProps}: Props) {
 
 
@@ -45,9 +46,17 @@ export function ScreenComponent({
                     paddingHorizontal="s24" 
                     style={[{padding: top, paddingBottom: bottom}, style]}>
                     {changeGoBack && 
-                    <TouchableOpacityBox onPress={navigation.goBack} flexDirection="row" mb="s40">
+                    <TouchableOpacityBox 
+                        onPress={navigation.goBack} 
+                        flexDirection="row" 
+                        justifyContent="space-between"
+                        alignItems="center"
+                        mb="s40"
+                        >
                         <Icon name="arrowLeft" color="primary"/>
-                        <Text preset="paragraphMedium" ml="s8" semiBold>Voltar</Text>
+                        {!title && <Text preset="paragraphMedium" ml="s8" semiBold>Voltar</Text>}
+                        {title && <Text preset="headingSmall">{title}</Text>}
+                        {title && <Box width={20} />}
                     </TouchableOpacityBox>}
                     {children}
                 </Box>
