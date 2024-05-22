@@ -15,6 +15,6 @@ async function getList(postId:number,page: number):Promise<Page<PostComment>> {
     }
 }
 
-export const postService = {
+export const postCommentService = {
     getList,
 };
