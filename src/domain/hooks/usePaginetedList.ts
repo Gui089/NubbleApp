@@ -59,6 +59,7 @@ export const usePaginetedList = <Data>(getList: (page: number) => Promise<Page<D
         loading,
         error,
         refresh: fetchInitialData,
-        fetchNextPage
+        fetchNextPage,
+        hasNextPage
     }
 }

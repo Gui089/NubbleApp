@@ -6,11 +6,12 @@ import { FlatList } from "react-native-gesture-handler";
 import { ListRenderItem } from "react-native";
 import { PostComment } from "src/domain/PostComment/postCommentTypes";
 import { PostCommentItem } from "./Components/PostCommentItem";
+import { PostCommentButton } from "./Components/PostCommentButton";
 
 
 export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) => {
     const postId = route.params.postId;
-    const {posts} = usePostCommentList(postId);
+    const {posts, fetchNextPage,hasNextPage } = usePostCommentList(postId);
 
     const renderPostComment: ListRenderItem<PostComment> = ({item}) => {
         return (
@@ -18,13 +19,21 @@ export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) 
         )
     }
 
+    const renderPostButton: ListRenderItem<PostComment> = ({item}) => {
+        return (
+            <PostCommentButton hasNextPage={hasNextPage} onPress={fetchNextPage}/>
+        )
+    }
+
     return (
         <ScreenComponent title="Comentários" changeGoBack>
-            <Box>
+            <Box mb="s24">
                 <FlatList
+                    showsVerticalScrollIndicator={false}
                     data={posts}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={renderPostComment}
+                    ListFooterComponent={renderPostButton}
                 />
             </Box>
         </ScreenComponent>
