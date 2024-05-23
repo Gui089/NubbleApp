@@ -10,7 +10,8 @@ module.exports = {
         '@screens': './src/screens',
         '@theme':'./src/theme',
         '@domain':'./src/domain',
-        '@api':'./src/api'
+        '@api':'./src/api',
+        '@utils': './src/utils',
       }
     }]
   ]
