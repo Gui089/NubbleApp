@@ -21,7 +21,7 @@ export type RootStackParamList = {
         placeholderInput: string
     },
     PostCommentScreen: {
-        postId: string,
+        postId: number,
     }
 }
 
