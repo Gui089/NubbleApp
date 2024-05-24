@@ -63,7 +63,7 @@ export function TextInput({label,errorMessage,RightComponent, ...rnTextInputProp
     )
 }
 
-const $textInputStyle: TextStyle = {
+export const $textInputStyle: TextStyle = {
     flexGrow:1,
     flexShrink:1,
     padding:0,

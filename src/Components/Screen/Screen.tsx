@@ -37,12 +37,18 @@ export function ScreenComponent({
     const navigation = useNavigation();
 
     return (
-        <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-            <Container backgroundColor={colors.background}>
+        <KeyboardAvoidingView 
+            style={{flex:1}} 
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+            <Container 
+            backgroundColor={colors.background}
+            >
                 <Box 
                     paddingBottom="s24"
                     paddingHorizontal="s24" 
-                    style={[{padding: top, paddingBottom: bottom}, style]}>
+                    style={[{padding: top, paddingBottom: bottom}, style]}
+                    {...BoxProps}
+                    >
                     <ScreenHeader changeGoBack={changeGoBack} title={title}/>
                     {children}
                 </Box>
