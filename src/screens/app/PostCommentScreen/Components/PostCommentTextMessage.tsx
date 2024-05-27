@@ -6,22 +6,22 @@ import { Keyboard } from "react-native";
 
 interface Props {
     postId: number;
+    onAddComment: () => void;
 }
-export const PostCommentTextMessage = ({postId}: Props) => {
+export const PostCommentTextMessage = ({postId, onAddComment}: Props) => {
 
     const [message, setMessage] = useState('');
-    const {createComment} = usePostCommentCreate(postId);
-
-    const sendMessage = async () => {
-        await createComment(message);
+    const {createComment} = usePostCommentCreate(postId, {onSuccess: () => {
+        onAddComment();
         setMessage('');
         Keyboard.dismiss();
-    }
+    }});
+
 
     return (
         <TextMessage
             placeholder="Adicione um comentário"
-            onPressSend={sendMessage}
+            onPressSend={createComment}
             value={message}
             onChangeText={setMessage}
           />
