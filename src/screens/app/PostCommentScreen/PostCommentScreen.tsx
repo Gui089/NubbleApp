@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, ScreenComponent, TextMessage } from "@Components";
+import { Box, ScreenComponent } from "@Components";
 import { AppScreenProps } from "src/routes/navigationTypes";
 import { usePostCommentList } from "@domain";
 import { FlatList } from "react-native-gesture-handler";
@@ -8,23 +8,19 @@ import { PostComment } from "src/domain/PostComment/postCommentTypes";
 import { PostCommentItem } from "./Components/PostCommentItem";
 import { PostCommentButton } from "./Components/PostCommentButton";
 import { useAppSafeArea } from "@hooks";
+import { PostCommentTextMessage } from "./Components/PostCommentTextMessage";
 
 
 export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) => {
     const postId = route.params.postId;
-    const {posts, fetchNextPage,hasNextPage } = usePostCommentList(postId);
-    const [message, setMessage] = useState('');
+    const {posts, fetchNextPage,hasNextPage } = usePostCommentList(postId);;
     const {bottom} = useAppSafeArea();
 
     const renderPostComment: ListRenderItem<PostComment> = ({item}) => {
         return (
             <PostCommentItem  postComment={item}/>
-        )
-    }
-
-    const sendMessage = () => {
-
-    }
+        );
+    };
 
     return (
         <ScreenComponent flex={1} title="Comentários" changeGoBack>
@@ -41,11 +37,8 @@ export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) 
               />
             }
           />
-          <TextMessage
-            placeholder="Adicione um comentário"
-            onPressSend={sendMessage}
-            value={message}
-            onChangeText={setMessage}
+          <PostCommentTextMessage
+              postId={postId}
           />
         </Box>
       </ScreenComponent>

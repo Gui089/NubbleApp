@@ -2,8 +2,8 @@ import { Page } from "src/types/Post";
 
 import { apiAdapter } from "@api";
 import { PostComment } from "./postCommentTypes";
-import { postCommentApi } from "./postCommentApi";
 import { postCommentAdapter } from "./postCommentAdapter";
+import { postCommentApi } from "./postCommentApi";
 
 
 async function getList(postId:number,page: number):Promise<Page<PostComment>> {
@@ -15,6 +15,14 @@ async function getList(postId:number,page: number):Promise<Page<PostComment>> {
     }
 }
 
+async function create(postId: number, message: string): Promise<PostComment> {
+    const postCommentAPI = await postCommentApi.create(postId, message);
+
+    return postCommentAdapter.toPostComment(postCommentAPI);
+
+}
+
 export const postCommentService = {
     getList,
+    create
 };
