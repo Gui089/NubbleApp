@@ -1,5 +1,6 @@
 
-import { usePaginetedList } from "@domain";
+
+import { usePaginetedList } from "@infra";
 import { postCommentService } from "../postCommentService";
 
 

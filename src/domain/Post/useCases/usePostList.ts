@@ -1,7 +1,7 @@
 
 import { Post } from "../postTypes"
 import { postService } from "../postService"
-import { usePaginetedList } from "@domain";
+import { usePaginetedList } from "@infra";
 
 
 

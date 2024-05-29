@@ -12,6 +12,7 @@ module.exports = {
         '@domain':'./src/domain',
         '@api':'./src/api',
         '@utils': './src/utils',
+        '@infra':'./src/infra',
       }
     }]
   ]
