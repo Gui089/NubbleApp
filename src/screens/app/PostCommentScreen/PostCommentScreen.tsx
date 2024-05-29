@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, ScreenComponent } from "@Components";
 import { AppScreenProps } from "src/routes/navigationTypes";
-import { usePostCommentList } from "@domain";
+import { usePostCommentList, useUser } from "@domain";
 import { FlatList } from "react-native-gesture-handler";
 import { ListRenderItem } from "react-native";
 import { PostComment } from "src/domain/PostComment/postCommentTypes";
@@ -13,12 +13,18 @@ import { PostCommentTextMessage } from "./Components/PostCommentTextMessage";
 
 export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) => {
     const postId = route.params.postId;
+    const postAuthorId = route.params.postAuthorId;
     const {posts, fetchNextPage,hasNextPage, refresh } = usePostCommentList(postId);;
     const {bottom} = useAppSafeArea();
 
+    const {id} = useUser();
+
     const renderPostComment: ListRenderItem<PostComment> = ({item}) => {
         return (
-            <PostCommentItem  postComment={item}/>
+            <PostCommentItem  
+            postComment={item} 
+            onRemoveComment={refresh} 
+            userId={id} postAuthorId={postAuthorId}/>
         );
     };
 

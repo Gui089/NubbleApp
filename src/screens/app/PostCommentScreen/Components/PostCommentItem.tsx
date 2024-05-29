@@ -1,16 +1,30 @@
-import { Box, ProfileAvatar, Text } from "@Components";
-import { usePostCommentRemove } from "@domain";
-import { dataUtils } from "@utils";
 import React from "react";
+import { Box, ProfileAvatar, Text } from "@Components";
+import { postCommentService, usePostCommentRemove } from "@domain";
+import { dataUtils } from "@utils";
 import { Alert, Pressable } from "react-native";
 import { PostComment } from "src/domain/PostComment/postCommentTypes";
 
 interface Props {
-    postComment: PostComment
+    postComment: PostComment,
+    userId: number,
+    postAuthorId: number
+    onRemoveComment: () => void;
 }
-export const PostCommentItem = ({postComment}: Props) => {
+export const PostCommentItem = ({
+    postComment, 
+    onRemoveComment, 
+    userId, 
+    postAuthorId
+}: Props) => {
 
-    const {mutate} = usePostCommentRemove();
+    const {mutate} = usePostCommentRemove({onSuccess: onRemoveComment});
+
+    const isAllowToDelete = postCommentService.isAllowToDelete(
+        postComment, 
+        userId, 
+        postAuthorId
+    );
 
     const confirmRemove = () => {
         Alert.alert('Deseja excluir o comentário ?', 'pressione confirmare', [
@@ -26,7 +40,7 @@ export const PostCommentItem = ({postComment}: Props) => {
     }
 
     return (
-        <Pressable onLongPress={confirmRemove}>
+        <Pressable disabled={!isAllowToDelete} onLongPress={confirmRemove}>
         <Box flexDirection="row" alignItems="center" mb="s16">
             <ProfileAvatar proFileUrl={postComment.author.profileURL}/>
 

@@ -12,6 +12,7 @@ export const PostBottom = ({author, commentCount, text, id}: PostBottomProps) =>
     const goToPostCommentScreen = () => {
         navigation.navigate('PostCommentScreen', {
             postId: id,
+            postAuthorId: author.id,
         })
     } 
 
