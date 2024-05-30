@@ -13,6 +13,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SingUpScreen } from './src/screens/auth/SingUpScreen/SingnUpScree';
 import { Router } from './src/routes/Routes';
 import { Toast } from '@Components';
+import { ToastProvider } from '@services';
+
 
 
 function App(): JSX.Element {
@@ -20,8 +22,10 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <Router />
-        <Toast />
+        <ToastProvider>
+          <Router />
+          <Toast />
+        </ToastProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );
