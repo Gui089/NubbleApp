@@ -1,6 +1,7 @@
 import { useContext} from "react";
 import { ToastContext } from "./Providers/ToastProvider";
 import { useToastContext } from "./useToastContext";
+import { useToastServiceZustand, useToastZustand } from "./useToastZustand";
 
 export interface Toast {
     message: string;
@@ -19,6 +20,14 @@ export interface ToastService {
 }
 
 
-export const useToast = (): ToastService => {
-    return useToastContext();
+export const useToast = (): ToastService['toast'] => {
+   /*  const {toast} = useToastContext();
+    return toast; */
+
+    return useToastZustand();
+    
+}
+
+export function useToastService(): Pick<ToastService, 'showToast' | 'hiddenToast'> {
+    return useToastServiceZustand();
 }

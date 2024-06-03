@@ -1,12 +1,13 @@
 import { Box, BoxProps, Icon, Text } from "@Components"
-import { useToast } from "@services"
+import { useToast, useToastService } from "@services"
 import { useEffect } from "react";
 import { Dimensions } from "react-native"
 
 
 export const Toast = () => {
 
-    const {toast, hiddenToast} = useToast();
+    const toast = useToast();
+    const {hiddenToast} = useToastService()
 
     useEffect(() => {
         if(toast) {
