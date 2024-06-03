@@ -31,6 +31,8 @@ import { TrashIcon } from "../../assets/icons/TrashIcon";
 import { Pressable } from "react-native";
 import { CheckRoundIcon } from "../../assets/icons/CheckRoundIcon";
 import { MessageRoundIcon } from "../../assets/icons/MessageRoundIcon";
+import { ErrorRoundIcon } from "../../assets/icons/ErrorRoundIcon";
+
 
 export interface IconBase {
     size?:number;
@@ -91,7 +93,8 @@ const iconRegistry = {
     search: SearchIcon,
     settings: SettingsIcon,
     trash: TrashIcon,
-    messageRound: MessageRoundIcon
+    messageRound: MessageRoundIcon,
+    errorRound: ErrorRoundIcon
 }
 
 type IconType = typeof iconRegistry;

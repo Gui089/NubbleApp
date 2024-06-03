@@ -1,11 +1,13 @@
-import { useContext} from "react";
-import { ToastContext } from "./Providers/ToastProvider";
-import { useToastContext } from "./useToastContext";
+
 import { useToastServiceZustand, useToastZustand } from "./useToastZustand";
 
+
+export type ToastPosition = 'top' | 'bottom';
+export type ToastType = 'success' | 'error';
 export interface Toast {
     message: string;
     type?: 'success' | 'error';
+    position?: 'top' | 'bottom';
     duration?: number;
     section?: {
         title: string;

@@ -1,19 +1,20 @@
-import { Box, BoxProps, Icon, Text } from "@Components"
-import { useToast, useToastService } from "@services"
+
+import { useToast, useToastService } from "@services";
 import { useEffect } from "react";
-import { Dimensions } from "react-native"
+import {Toast as ToastType} from '@services';
+import { ToastContent } from "./Components/ToastContent";
 
-
+const DEFAULT_DURATION = 2000;
 export const Toast = () => {
 
     const toast = useToast();
-    const {hiddenToast} = useToastService()
+    const {hiddenToast} = useToastService();
 
     useEffect(() => {
         if(toast) {
             setTimeout(() => {
                 hiddenToast();
-            },2000)
+            },toast.duration || DEFAULT_DURATION)
         }
     },[toast, hiddenToast])
 
@@ -22,26 +23,6 @@ export const Toast = () => {
     }
 
     return (
-        <Box 
-            top={100}
-            {...$boxStyle}
-            >
-                <Icon color="success" name="checkRound"/>
-            <Text  style={{flexShrink:1}} preset="paragraphMedium" bold ml="s16">
-                {toast.message}
-            </Text>
-        </Box>
+        <ToastContent toast={toast}/>
     )
 }
-
-const $boxStyle: BoxProps = {
-    position:"absolute",
-    backgroundColor:"background", 
-    alignSelf:"center",
-    flexDirection:"row",
-    alignItems:"center",
-    padding:"s16",
-    borderRadius:"s16",
-    opacity:0.95,
-    maxWidth: Dimensions.get('screen').width * 0.9
-} 
