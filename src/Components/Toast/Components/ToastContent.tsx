@@ -35,9 +35,7 @@ const mapTypeIcon: Record<ToastType, IconProps> = {
 }
 
 const $boxStyle: BoxProps = {
-    position:"absolute",
     backgroundColor:"background", 
-    alignSelf:"center",
     flexDirection:"row",
     alignItems:"center",
     padding:"s16",
