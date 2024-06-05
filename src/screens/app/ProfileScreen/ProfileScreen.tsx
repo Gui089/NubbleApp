@@ -1,7 +1,7 @@
 import { Box, ProfileAvatar, ScreenComponent, Text } from '@Components';
 import { userUserGetById } from '@domain';
 import React from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
 
 
 import { AppScreenProps } from 'src/routes/navigationTypes';
@@ -10,13 +10,16 @@ import { AppScreenProps } from 'src/routes/navigationTypes';
 export function ProfileScreen({route}: AppScreenProps<'ProfileScreen'>) {
   const userId = route.params.userId;
 
-  const {isLoading, isError, user} = userUserGetById(userId);
+  const {isLoading, isError, user, isFetching, refetch} = userUserGetById(userId);
 
   return (
-    <ScreenComponent changeGoBack>
+    <ScreenComponent changeGoBack flex={1}>
       {isLoading && <ActivityIndicator />}
       {isError && <Text> error ao carregar perfil do usuário</Text>}
       {user && (
+        <ScrollView refreshControl={
+            <RefreshControl onRefresh={refetch} refreshing={isFetching}/>
+        }>
         <Box alignItems="center">
           <ProfileAvatar
             proFileUrl={user.profileUrl}
@@ -29,6 +32,7 @@ export function ProfileScreen({route}: AppScreenProps<'ProfileScreen'>) {
           </Text>
           <Text>@{user.username}</Text>
         </Box>
+        </ScrollView>
       )}
     </ScreenComponent>
   );

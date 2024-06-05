@@ -6,7 +6,7 @@ import { QueryKeys } from "@infra";
 
 export function userUserGetById(id:number) {
 
-    const {data, isLoading, isError} = useQuery({
+    const {data, isLoading, isError, refetch, isFetching} = useQuery({
         queryKey: [QueryKeys.UserGetById],
         queryFn: () => userService.getById(id),
         staleTime: 1000 * 10,
@@ -15,6 +15,8 @@ export function userUserGetById(id:number) {
     return {
         user: data,
         isError,
-        isLoading
+        isLoading,
+        isFetching,
+        refetch
     }
 }
