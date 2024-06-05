@@ -23,6 +23,9 @@ export type RootStackParamList = {
     PostCommentScreen: {
         postId: number,
         postAuthorId: number
+    },
+    ProfileScreen: {
+        userId: number
     }
 }
 

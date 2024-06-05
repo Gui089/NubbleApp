@@ -34,7 +34,6 @@ export const Toast = () => {
 
             setTimeout(() => {
                 runExitingAnimation(hiddenToast);
-                
             },toast.duration || DEFAULT_DURATION)
         }
     },[toast, hiddenToast, runEntryAnimation, runEntryAnimation]);
