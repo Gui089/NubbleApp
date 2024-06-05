@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
-import { User } from "../userTypes";
+
 import { userService } from "../userService";
+import { useQuery } from "@tanstack/react-query";
+import { QueryKeys } from "@infra";
 
 
 export function userUserGetById(id:number) {
-    const [user, setUser] = useState<User>();
+    /* const [user, setUser] = useState<User>();
     const [error, setError] = useState<boolean | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -21,11 +22,16 @@ export function userUserGetById(id:number) {
 
     useEffect(() => {
         getUserById();
-    }, [getUserById]);
+    }, [getUserById]); */
+
+    const {data, isLoading, isError} = useQuery({
+        queryKey: [QueryKeys.UserGetById],
+        queryFn: () => userService.getById(id),
+    });
 
     return {
-        user,
-        error,
-        loading
+        user: data,
+        isError,
+        isLoading
     }
 }

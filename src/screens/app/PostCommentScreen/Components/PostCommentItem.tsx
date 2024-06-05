@@ -4,7 +4,7 @@ import { postCommentService, usePostCommentRemove } from "@domain";
 import { dataUtils } from "@utils";
 import { Alert, Pressable } from "react-native";
 import { PostComment } from "src/domain/PostComment/postCommentTypes";
-import { useToast, useToastService } from "@services";
+import { useToastService } from "@services";
 
 interface Props {
     postComment: PostComment,

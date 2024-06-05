@@ -12,11 +12,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Router } from './src/routes/Routes';
 import { Toast } from '@Components';
 import { ToastProvider } from '@services';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+const queryClient = new QueryClient();
 
 function App(): JSX.Element {
 
   return (
+    <QueryClientProvider client={queryClient}>
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <ToastProvider>
@@ -25,6 +28,7 @@ function App(): JSX.Element {
         </ToastProvider>
       </ThemeProvider>
     </SafeAreaProvider>
+    </QueryClientProvider>
   );
 }
 
