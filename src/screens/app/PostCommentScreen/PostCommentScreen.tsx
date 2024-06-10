@@ -45,7 +45,6 @@ export const PostCommentScreen = ({route}: AppScreenProps<'PostCommentScreen'>) 
           />
           <PostCommentTextMessage
               postId={postId}
-              onAddComment={refresh}
           />
         </Box>
       </ScreenComponent>

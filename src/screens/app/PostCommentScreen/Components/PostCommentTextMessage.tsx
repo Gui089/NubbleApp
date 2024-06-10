@@ -6,15 +6,14 @@ import { Keyboard } from "react-native";
 
 interface Props {
     postId: number;
-    onAddComment: () => void;
 }
-export const PostCommentTextMessage = ({postId, onAddComment}: Props) => {
+export const PostCommentTextMessage = ({postId}: Props) => {
 
     const [message, setMessage] = useState('');
-    const {createComment} = usePostCommentCreate(postId, {onSuccess: () => {
-        onAddComment();
-        setMessage('');
-        Keyboard.dismiss();
+    const {createComment} = usePostCommentCreate(postId, {
+        onSuccess: () => {
+            setMessage('');
+            Keyboard.dismiss();
     }});
 
 
@@ -24,6 +23,6 @@ export const PostCommentTextMessage = ({postId, onAddComment}: Props) => {
             onPressSend={createComment}
             value={message}
             onChangeText={setMessage}
-          />
+        />
     )
 }
