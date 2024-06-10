@@ -2,7 +2,7 @@ import { ActivityIndicator, Box, Button, Text } from "@Components";
 import React from "react";
 
 interface Props {
-    error:  boolean;
+    error:  boolean | null;
     loading: boolean;
     reload: () => void;
 }

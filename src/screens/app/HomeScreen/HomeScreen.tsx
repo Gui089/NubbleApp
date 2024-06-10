@@ -15,7 +15,7 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
     const flatListRef = useRef<FlatList<Post>>(null);
     useScrollToTop(flatListRef);
 
-    const {posts, error, loading, refresh, fetchNextPage} = usePostList()
+    const {posts, isError, isLoading, refresh, fetchNextPage} = usePostList()
 
     const renderItem = ({ item }: ListRenderItemInfo<Post>) => {
         return (
@@ -35,11 +35,11 @@ export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
                 onEndReached={fetchNextPage}
                 onEndReachedThreshold={0.1}
                 refreshControl={
-                    <RefreshControl refreshing={loading} onRefresh={refresh} />
+                    <RefreshControl refreshing={isLoading} onRefresh={refresh} />
                 }
                 style={{flex: posts.length === 0 ? 1 : undefined}}
                 ListHeaderComponent={HomeHeader}
-                ListEmptyComponent={<HomeEmpty error={error} loading={loading} reload={refresh}/>}
+                ListEmptyComponent={<HomeEmpty error={isError} loading={isLoading} reload={refresh}/>}
                 />
         </ScreenComponent>
     );
