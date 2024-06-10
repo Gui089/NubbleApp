@@ -7,12 +7,14 @@ import { PostComment } from "src/domain/PostComment/postCommentTypes";
 import { useToastService } from "@services";
 
 interface Props {
+    postId: number;
     postComment: PostComment,
     userId: number,
     postAuthorId: number
     onRemoveComment: () => void;
 }
 export const PostCommentItem = ({
+    postId,
     postComment, 
     onRemoveComment, 
     userId, 
@@ -21,7 +23,8 @@ export const PostCommentItem = ({
 
     const {showToast} = useToastService();
 
-    const {mutate} = usePostCommentRemove({onSuccess: () => {
+    const {mutate} = usePostCommentRemove(postId,{
+        onSuccess: () => {
         onRemoveComment();
         showToast({message:'Comentário deletado', position: 'bottom'});
     }});
